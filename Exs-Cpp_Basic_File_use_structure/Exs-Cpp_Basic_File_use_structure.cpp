@@ -5,7 +5,7 @@
 #include <fstream>
 
 
-int choise;
+int choise,i,m;
 
 void ReadFile();
 void Edit();
@@ -24,6 +24,7 @@ struct MyStruct
 
 int main()
 {
+    
     printf("\n---------File with structure----------\n");
     printf("\nThe File of format contains data structure of elements:\n- Number\n- Type/description of max 15 characters\n- Content of text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
@@ -54,11 +55,33 @@ int main()
 
 void ReadFile()
 {
+    FILE* File;
+    char a[50];
+    MyStruct g[10];
+    i = 0;
+    m = 10;
+    fopen_s(&File, "File.txt", "rt");
+        for (;;)
+        {
+            
+            std::fgets(a, m, File);
+            if (a[0] == '.') break;
+            strcpy_s(g[i].type, a);
+            printf("\n%c", a[i]);
+
+            std::fgets(a, m, File);
+            strcpy_s(g[i].type, a);
+            printf("\n%c", a[i]);
+            i = i + 1;
+        };
+        
+    /*
     std::ifstream File("File.txt");
     char a[100];
     File >> a;
     std::cout << a;
-}
+    */
+};
 
 void Edit()
 {
