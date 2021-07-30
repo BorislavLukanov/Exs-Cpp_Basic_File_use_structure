@@ -64,14 +64,19 @@ void ReadFile()
         for (;;)
         {
             
-            std::fgets(a, m, File);
+            fgets(a, m, File);
             if (a[0] == '.') break;
             strcpy_s(g[i].type, a);
-            printf("\n%c", a[i]);
-
+            g[i].type[(strlen(g[i].type)) - 1] = '\0';
+            for (i = 0; i < 10; i++) {
+                printf("\n%c", a[i]);
+            };
+            
+            /*
             std::fgets(a, m, File);
             strcpy_s(g[i].type, a);
             printf("\n%c", a[i]);
+            */
             i = i + 1;
         };
         
