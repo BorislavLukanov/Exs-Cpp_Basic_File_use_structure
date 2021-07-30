@@ -69,7 +69,7 @@ void ReadFile()
             fgets(a, m, File);
             if (a[0] == '.') break;
             
-            printf("\n%s", a);
+            printf("%s", a);
 
             //strcpy_s(g[i].type, a[i]);
             // 
