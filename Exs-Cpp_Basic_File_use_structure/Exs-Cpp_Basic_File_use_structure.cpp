@@ -67,7 +67,7 @@ void ReadFile()
             fgets(a, m, File);
             if (a[0] == '.') break;
             strcpy_s(g[i].type, a);
-            g[i].type[(strlen(g[i].type)) - 1] = '\0';
+            //g[i].type[(strlen(g[i].type)) - 1] = '\0';
             for (i = 0; i < 10; i++) {
                 printf("\n%c", a[i]);
             };
