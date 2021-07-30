@@ -78,6 +78,7 @@ void ReadFile()
 
             printf("%s", g[i].type);
 
+            //printf("%s", g[i].content);
             //strcpy_s(g[i].type, a[i]);
             // 
             //g[i].type[(strlen(g[i].type)) - 1] = '\0';
