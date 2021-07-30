@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+#include <fstream>
 
 int choise;
 
@@ -52,17 +53,17 @@ int main()
 
 void LoadFile()
 {
-    FILE* File;
-    errno_t err;
-    err = fopen_s(&File, "File.txt", "rt");
-    if (err == 0) std::cout << "\nOpened";
-
-
+      
     
 }
 
 void Edit()
 {
+    
+        std::ofstream File2("File2.txt");
+        File2 << "Hello1";
+
+  
     
 };
 
