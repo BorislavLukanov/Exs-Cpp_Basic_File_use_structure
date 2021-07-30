@@ -68,8 +68,15 @@ void ReadFile()
             
             fgets(a, m, File);
             if (a[0] == '.') break;
-            
-            printf("%s", a);
+            printf("\n"); // :D
+
+            g[i].number=atoi(a); 
+            fgets(a, m, File);
+            strcpy_s(g[i].type, a);
+            fgets(a, m, File);
+            strcpy_s(g[i].content, a);
+
+            printf("%s", g[i].type);
 
             //strcpy_s(g[i].type, a[i]);
             // 
