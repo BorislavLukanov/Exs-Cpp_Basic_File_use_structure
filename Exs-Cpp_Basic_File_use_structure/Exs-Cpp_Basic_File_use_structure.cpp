@@ -59,28 +59,39 @@ void ReadFile()
     char a[50];
     MyStruct g[10];
     i = 0;
-    m = 10;
+    m = 100;
     fopen_s(&File, "File.txt", "rt");
+   
+    
         for (;;)
         {
             
             fgets(a, m, File);
             if (a[0] == '.') break;
-            strcpy_s(g[i].type, a);
-            //g[i].type[(strlen(g[i].type)) - 1] = '\0';
-            for (i = 0; i < 10; i++) {
-                printf("\n%c", a[i]);
-            };
             
+            printf("\n%s", a);
+
+            //strcpy_s(g[i].type, a[i]);
+            // 
+            //g[i].type[(strlen(g[i].type)) - 1] = '\0';
             /*
+            std::fgets(a, m, File);
+            strcpy_s(g[i].content, a);
+            g[i].type[(strlen(g[i].content)) - 1] = '\0';
+            printf("\n%c", a[i]);
+            
+            
+            
             std::fgets(a, m, File);
             strcpy_s(g[i].type, a);
             printf("\n%c", a[i]);
             */
-            i = i + 1;
+            };
+        /*
+        for (i = 0; i < 10; i++) {
+            printf("\n%c", a[i]);
         };
-        
-    /*
+    
     std::ifstream File("File.txt");
     char a[100];
     File >> a;
