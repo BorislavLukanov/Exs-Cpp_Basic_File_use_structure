@@ -4,9 +4,10 @@
 #include <iostream>
 #include <fstream>
 
+
 int choise;
 
-void LoadFile();
+void ReadFile();
 void Edit();
 void DispCont();
 void OpnFile();
@@ -16,7 +17,7 @@ struct MyStruct
 {
     int number;
     char type[15];
-    char* content[100];
+    char content[100];
 };
 
 
@@ -36,7 +37,7 @@ int main()
    
     switch (choise)
     {
-    case 1: LoadFile();
+    case 1: ReadFile();
         break;
     case 2: Edit();
         break;
@@ -51,17 +52,19 @@ int main()
     };
 };
 
-void LoadFile()
+void ReadFile()
 {
-      
-    
+    std::ifstream File("File.txt");
+    char a[100];
+    File >> a;
+    std::cout << a;
 }
 
 void Edit()
 {
     
-        std::ofstream File2("File2.txt");
-        File2 << "Hello1";
+    std::ofstream File2("File1.txt");
+    File2 << "Hello";
 
   
     

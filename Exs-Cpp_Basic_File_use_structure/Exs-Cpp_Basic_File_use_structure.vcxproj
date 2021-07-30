@@ -141,9 +141,6 @@
   <ItemGroup>
     <ClCompile Include="Exs-Cpp_Basic_File_use_structure.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\File.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
