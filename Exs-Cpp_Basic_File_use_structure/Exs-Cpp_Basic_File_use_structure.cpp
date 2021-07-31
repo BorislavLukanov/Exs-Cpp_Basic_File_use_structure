@@ -51,6 +51,7 @@ int main()
     };
     } while (choise != 5);
 };
+
 void SelectFile()
 {
     errno_t err;
@@ -60,8 +61,7 @@ void SelectFile()
     err = fopen_s(&orgFile, nameFile, "r");
     if (err == 0)
     {
-        char a[100]; int i = 0;
-        printf("\nFile selected: %s\n", nameFile);       
+       printf("\nFile selected: %s\n", nameFile);       
     }
 
     else
@@ -71,7 +71,7 @@ void SelectFile()
 };
 
 void DisplayFile()
-{
+{ 
     char arrFile[20];
     fgets(arrFile, 100, orgFile);
     printf("\n%s", arrFile);
