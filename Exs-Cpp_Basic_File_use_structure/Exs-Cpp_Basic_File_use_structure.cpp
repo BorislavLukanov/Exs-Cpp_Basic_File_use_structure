@@ -8,10 +8,10 @@
 int choise,i,m;
 
 void SelectFile();
-void Edit();
+void DisplayFile();
 void DispCont();
 void OpnFile();
-void some();
+int quit();
 FILE* orgFile;
 struct MyStruct
 {
@@ -31,26 +31,25 @@ int main()
     printf("\nChoose from the menu.\n");
     
     do {
-        printf("\n1 Load a file.\n2 Edit the file.\n3 Display the content of a file.\n4 Open a file.\n5 some\n");
+        printf("\n1 Load a file.\n2 Edit the file.\n3 Display the content of a file.\n4 Open a file.\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         
-    } while (choise < 1 || choise > 5);
-   
     switch (choise)
     {
     case 1: SelectFile();
         break;
-    case 2: Edit();
+    case 2: DisplayFile();
         break;
     case 3: DispCont();
        break;
     case 4: OpnFile();
         break;
-    case 5: some();
+    case 5: quit();
         break;
     default: printf("\nChoose from 1 to 5\n");
         break;
     };
+    } while (choise != 5);
 };
 void SelectFile()
 {
@@ -71,13 +70,11 @@ void SelectFile()
     };
 };
 
-void Edit()
+void DisplayFile()
 {
-    
-    std::ofstream File2("File1.txt");
-    File2 << "Hello";
-
-  
+    char arrFile[20];
+    fgets(arrFile, 100, orgFile);
+    printf("\n%s", arrFile);
     
 };
 
@@ -109,6 +106,9 @@ void DispCont()
         //printf("%s", g[i].content);
         //strcpy_s(g[i].type, a[i]);
         // 
+        //    std::ofstream File2("File1.txt");
+        //File2 << "Hello";
+
         //g[i].type[(strlen(g[i].type)) - 1] = '\0';
         /*
         std::fgets(a, m, File);
@@ -140,7 +140,7 @@ void OpnFile()
     
 };
 
-void some()
+int quit()
 {
-    
+    std::cout << "\nquake :D\n"; return 0;
 };
