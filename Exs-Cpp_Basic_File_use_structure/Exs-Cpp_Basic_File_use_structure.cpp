@@ -17,7 +17,7 @@ struct MyStruct
 {
     int number;
     char type[15];
-    char content[100];
+    char text[100];
 };
 MyStruct initFile[100];
 
@@ -27,12 +27,12 @@ int main()
 {
     
     printf("\n---------File with structure----------\n");
-    printf("\nThe File of format contains data structure of elements:\n- Number\n- Type/description of max 15 characters\n- Content of text\n\n---------------------------------------\n");
+    printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
 
     printf("\nChoose from the menu.\n");
     
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 some\n5 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         
     switch (choise)
@@ -76,39 +76,39 @@ void SelectFile()
         fgets(arrFile, 200, orgFile);
         strcpy_s(initFile[i].type, arrFile);
         fgets(arrFile, 200, orgFile);
-        strcpy_s(initFile[i].content, arrFile);
+        strcpy_s(initFile[i].text, arrFile);
         elements = i+1;
         i = i + 1;
     };
     std::cout << "File initialized.\n";
-    printf("\nStructures: %d\n", elements);
+    printf("\nNumber of structures in the file: %d\n", elements);
 };
 
 void DisplayFile()
 { 
     
-    for (i=0;i<elements;i++){
-        printf("\n%d\n%s%s", initFile[i].number, initFile[i].type, initFile[i].content);
+    for (i=0;i<elements;i++)
+    {
+        printf("\n%d\n%s%s", initFile[i].number, initFile[i].type, initFile[i].text);
     };
 };
 
 void DispElement()
 {
     int el;
-    
     do
     {
-        std::cout << "Element to display:1 numer ;2 type ;3 text\n";
+        std::cout << "Element to display:\n1 numer\n2 type\n3 text\n";
         std::cin >> el;
         switch (el)
         {
         case 1: for (i = 0; i < elements; i++) printf("%d\n", initFile[i].number); break;
         case 2: for (i = 0; i < elements; i++) printf("%s", initFile[i].type); std::cout << "\n"; break;
-        case 3: for (i = 0; i < elements; i++) printf("%s", initFile[i].content); std::cout << "\n"; break;
-        default: printf("\nChoose from 1 to 3\n");
-            break;
+        case 3: for (i = 0; i < elements; i++) printf("%s", initFile[i].text); std::cout << "\n"; break;
+        default: printf("\nChoose from 1 to 3\n"); break;
         }
-    } while (el < 1 || el>3);
+     }
+    while (el < 1 || el>3);
  };
 
 void OpnFile()
