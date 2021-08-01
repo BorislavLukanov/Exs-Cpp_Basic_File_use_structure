@@ -94,102 +94,22 @@ void DisplayFile()
 
 void DispElement()
 {
+    int el;
     
-    char el[10];
-    std::cout << "Element to display: numer ; type ; text\n";
-    std::cin >> el;
-    for (i = 0; i < elements; i++)
+    do
     {
-        if (el == "type")
+        std::cout << "Element to display:1 numer ;2 type ;3 text\n";
+        std::cin >> el;
+        switch (el)
         {
-            printf("\n%s", initFile[i].type);
-        };
-        /*
-        DispEl[i].number = atoi(arrDisp);
-        fgets(arrDisp, 100, orgFile);
-        strcpy_s(DispEl[i].type, arrDisp);
-        fgets(arrDisp, 100, orgFile);
-        strcpy_s(DispEl[i].content, arrDisp);
-        //printf("\n%s", DispEl->type);
-        if (el == "1") {
-            for (i = 0; i < 100; i++)
-            {
-                printf("\n%d", DispEl->number);
-            };
-        };
-        if (el == "type")
-        {
-            for (i = 0; i < 100; i++)
-            {
-                printf("\n%s", DispEl->type);
-            };
+        case 1: for (i = 0; i < elements; i++) printf("%d\n", initFile[i].number); break;
+        case 2: for (i = 0; i < elements; i++) printf("%s", initFile[i].type); std::cout << "\n"; break;
+        case 3: for (i = 0; i < elements; i++) printf("%s", initFile[i].content); std::cout << "\n"; break;
+        default: printf("\nChoose from 1 to 3\n");
+            break;
         }
-        if (el == "text")
-        {
-            for (i = 0; i < 100; i++)
-            {
-                printf("\n%s", DispEl->content);
-            };
-        }*/
-    };
-    
-   
-    
-    
-    FILE* File;
-    char a[50];
-    MyStruct g[10];
-    i = 0;
-    m = 100;
-    fopen_s(&File, "File.txt", "rt");
-
-
-    for (;;)
-    {
-
-        fgets(a, m, File);
-        if (a[0] == '.') break;
-        printf("\n"); // :D
-
-        g[i].number = atoi(a);
-        fgets(a, m, File);
-        strcpy_s(g[i].type, a);
-        fgets(a, m, File);
-        strcpy_s(g[i].content, a);
-
-        printf("%s", g[i].type);
-
-        //printf("%s", g[i].content);
-        //strcpy_s(g[i].type, a[i]);
-        // 
-        //    std::ofstream File2("File1.txt");
-        //File2 << "Hello";
-
-        //g[i].type[(strlen(g[i].type)) - 1] = '\0';
-        /*
-        std::fgets(a, m, File);
-        strcpy_s(g[i].content, a);
-        g[i].type[(strlen(g[i].content)) - 1] = '\0';
-        printf("\n%c", a[i]);
-
-
-
-        std::fgets(a, m, File);
-        strcpy_s(g[i].type, a);
-        printf("\n%c", a[i]);
-        */
-    };
-    /*
-    for (i = 0; i < 10; i++) {
-        printf("\n%c", a[i]);
-    };
-
-std::ifstream File("File.txt");
-char a[100];
-File >> a;
-std::cout << a;
-*/
-};
+    } while (el < 1 || el>3);
+ };
 
 void OpnFile()
 {
@@ -198,5 +118,5 @@ void OpnFile()
 
 int quit()
 {
-    std::cout << "\nquake :D\n"; return 0;
+    std::cout << "\nquake :D\n"; fclose(orgFile); return 0;
 };
