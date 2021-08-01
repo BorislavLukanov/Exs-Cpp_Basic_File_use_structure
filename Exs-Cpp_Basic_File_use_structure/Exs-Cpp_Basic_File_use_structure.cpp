@@ -9,7 +9,7 @@ int choise,i,m;
 
 void SelectFile();
 void DisplayFile();
-void DispCont();
+void DispElement();
 void OpnFile();
 int quit();
 FILE* orgFile;
@@ -31,7 +31,7 @@ int main()
     printf("\nChoose from the menu.\n");
     
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 some\n4 some\n5 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 some\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         
     switch (choise)
@@ -40,7 +40,7 @@ int main()
         break;
     case 2: DisplayFile();
         break;
-    case 3: DispCont();
+    case 3: DispElement();
        break;
     case 4: OpnFile();
         break;
@@ -78,8 +78,8 @@ void DisplayFile()
         
     for (i=0;i<100;i++){
         i = 0;
-        fgets(arrFile, 100, orgFile);
-        if (arrFile[0] == '.') break;
+        fgets(arrFile, 20, orgFile);
+        if (arrFile[0] == '.') return;
         DispFile.number = atoi(arrFile);
         fgets(arrFile, 100, orgFile);
         strcpy_s(DispFile.type, arrFile);
@@ -96,8 +96,50 @@ void DisplayFile()
 
 };
 
-void DispCont()
+void DispElement()
 {
+    MyStruct DispEl[20];
+    char arrDisp[20], el[10];
+    std::cout << "Element to display: numer ; type ; text\n";
+    std::cin >> el;
+    for (i = 0; i < 100; i++)
+    {
+        fgets(arrDisp, 100, orgFile);
+        if (arrDisp[0] == '.') 
+        {
+            std::cout << "\nEnd of file"; return;
+        };
+        DispEl[i].number = atoi(arrDisp);
+        fgets(arrDisp, 100, orgFile);
+        strcpy_s(DispEl[i].type, arrDisp);
+        fgets(arrDisp, 100, orgFile);
+        strcpy_s(DispEl[i].content, arrDisp);
+        //printf("\n%s", DispEl->type);
+        if (el == "1") {
+            for (i = 0; i < 100; i++)
+            {
+                printf("\n%d", DispEl->number);
+            };
+        };
+        if (el == "type")
+        {
+            for (i = 0; i < 100; i++)
+            {
+                printf("\n%s", DispEl->type);
+            };
+        }
+        if (el == "text")
+        {
+            for (i = 0; i < 100; i++)
+            {
+                printf("\n%s", DispEl->content);
+            };
+        }
+    };
+    
+   
+    
+    
     FILE* File;
     char a[50];
     MyStruct g[10];
