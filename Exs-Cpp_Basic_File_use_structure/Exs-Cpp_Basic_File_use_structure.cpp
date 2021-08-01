@@ -24,33 +24,24 @@ MyStruct initFile[100];
 
 
 int main()
-{
-    
+{    
     printf("\n---------File with structure----------\n");
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
-
     printf("\nChoose from the menu.\n");
-    
     do {
         printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
-        
-    switch (choise)
-    {
-    case 1: SelectFile();
-        break;
-    case 2: DisplayFile();
-        break;
-    case 3: DispElement();
-       break;
-    case 4: OpnFile();
-        break;
-    case 5: quit();
-        break;
-    default: printf("\nChoose from 1 to 5\n");
-        break;
-    };
-    } while (choise != 5);
+        switch (choise)
+        {
+        case 1: SelectFile(); break;
+        case 2: DisplayFile(); break;
+        case 3: DispElement(); break;
+        case 4: OpnFile(); break;
+        case 5: quit(); break;
+        default: printf("\nChoose from 1 to 5\n"); break;
+        };
+    }
+    while (choise != 5);
 };
 
 void SelectFile()
@@ -96,8 +87,7 @@ void DisplayFile()
 void DispElement()
 {
     int el;
-    do
-    {
+    do{
         std::cout << "Element to display:\n1 numer\n2 type\n3 text\n";
         std::cin >> el;
         switch (el)
@@ -106,7 +96,7 @@ void DispElement()
         case 2: for (i = 0; i < elements; i++) printf("%s", initFile[i].type); std::cout << "\n"; break;
         case 3: for (i = 0; i < elements; i++) printf("%s", initFile[i].text); std::cout << "\n"; break;
         default: printf("\nChoose from 1 to 3\n"); break;
-        }
+        };
      }
     while (el < 1 || el>3);
  };
