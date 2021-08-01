@@ -72,10 +72,28 @@ void SelectFile()
 
 void DisplayFile()
 { 
+    MyStruct DispFile;
     char arrFile[20];
-    fgets(arrFile, 100, orgFile);
-    printf("\n%s", arrFile);
+    int num[10];
+        
+    for (i=0;i<100;i++){
+        i = 0;
+        fgets(arrFile, 100, orgFile);
+        if (arrFile[0] == '.') break;
+        DispFile.number = atoi(arrFile);
+        fgets(arrFile, 100, orgFile);
+        strcpy_s(DispFile.type, arrFile);
+        fgets(arrFile, 100, orgFile);
+        strcpy_s(DispFile.content, arrFile);
+        
+            printf("\n%d", DispFile.number);
+            printf("\n%s", DispFile.type);
+            printf("%s", DispFile.content);
+            std::cout << "\n";
+        
+    };
     
+
 };
 
 void DispCont()
