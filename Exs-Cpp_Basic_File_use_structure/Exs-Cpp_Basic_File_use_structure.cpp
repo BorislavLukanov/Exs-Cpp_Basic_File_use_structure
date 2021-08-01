@@ -4,13 +4,11 @@
 #include <iostream>
 #include <fstream>
 
-
 int choise,i,m,elements;
-
 void SelectFile();
 void DisplayFile();
 void DispElement();
-void OpnFile();
+void SelectNewFile();
 int quit();
 FILE* orgFile;
 struct MyStruct
@@ -21,22 +19,21 @@ struct MyStruct
 };
 MyStruct initFile[100];
 
-
-
 int main()
 {    
+    
     printf("\n---------File with structure----------\n");
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure\n5 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Load new file.\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         switch (choise)
         {
         case 1: SelectFile(); break;
         case 2: DisplayFile(); break;
         case 3: DispElement(); break;
-        case 4: OpnFile(); break;
+        case 4: SelectNewFile(); break;
         case 5: quit(); break;
         default: printf("\nChoose from 1 to 5\n"); break;
         };
@@ -77,7 +74,6 @@ void SelectFile()
 
 void DisplayFile()
 { 
-    
     for (i=0;i<elements;i++)
     {
         printf("\n%d\n%s%s", initFile[i].number, initFile[i].type, initFile[i].text);
@@ -101,9 +97,15 @@ void DispElement()
     while (el < 1 || el>3);
  };
 
-void OpnFile()
+void SelectNewFile()
 {
-    
+    errno_t err;
+    err = fclose(orgFile);
+    if (err==0)
+    {
+        std::cout << "\nFile closed.\nSelect 1 from the menu.";
+    }
+    delete initFile;
 };
 
 int quit()
