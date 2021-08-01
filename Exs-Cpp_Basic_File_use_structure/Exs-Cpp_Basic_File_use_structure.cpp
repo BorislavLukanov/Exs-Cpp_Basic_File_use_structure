@@ -94,17 +94,17 @@ void DisplayFile()
 
 void DispElement()
 {
-    MyStruct DispEl[20];
-    char arrDisp[20], el[10];
+    
+    char el[10];
     std::cout << "Element to display: numer ; type ; text\n";
     std::cin >> el;
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < elements; i++)
     {
-        fgets(arrDisp, 100, orgFile);
-        if (arrDisp[0] == '.') 
+        if (el == "type")
         {
-            std::cout << "\nEnd of file"; return;
+            printf("\n%s", initFile[i].type);
         };
+        /*
         DispEl[i].number = atoi(arrDisp);
         fgets(arrDisp, 100, orgFile);
         strcpy_s(DispEl[i].type, arrDisp);
@@ -130,7 +130,7 @@ void DispElement()
             {
                 printf("\n%s", DispEl->content);
             };
-        }
+        }*/
     };
     
    
