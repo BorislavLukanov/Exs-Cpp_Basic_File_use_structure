@@ -62,26 +62,26 @@ void SelectFile()
     err = fopen_s(&orgFile, nameFile, "r");
     if (err == 0)
     {
-       printf("\nFile selected: %s\n", nameFile);       
+       printf("\nFile selected: %s\n", nameFile);
+       for (;;) {
+           char arrFile[200];
+           fgets(arrFile, 200, orgFile);
+           if (arrFile[0] == '.') break;
+           initFile[i].number = atoi(arrFile);
+           fgets(arrFile, 200, orgFile);
+           strcpy_s(initFile[i].type, arrFile);
+           fgets(arrFile, 200, orgFile);
+           strcpy_s(initFile[i].text, arrFile);
+           elements = i + 1;
+           i = i + 1;
+       };
+       std::cout << "File initialized.\n";
+       printf("\nNumber of structures in the file: %d\n", elements);
     }
     else
     {
         printf("\nNo such file.\n");
     };
-    for (;;) {
-        char arrFile[200];
-        fgets(arrFile, 200, orgFile);
-        if (arrFile[0] == '.') break;
-        initFile[i].number = atoi(arrFile);        
-        fgets(arrFile, 200, orgFile);
-        strcpy_s(initFile[i].type, arrFile);
-        fgets(arrFile, 200, orgFile);
-        strcpy_s(initFile[i].text, arrFile);
-        elements = i+1;
-        i = i + 1;
-    };
-    std::cout << "File initialized.\n";
-    printf("\nNumber of structures in the file: %d\n", elements);
 };
 
 void DisplayFile()
