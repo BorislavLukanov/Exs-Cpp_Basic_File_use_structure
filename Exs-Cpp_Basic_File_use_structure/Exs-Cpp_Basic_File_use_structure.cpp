@@ -31,7 +31,7 @@ int main()
     printf("\nChoose from the menu.\n");
     
     do {
-        printf("\n1 Load a file.\n2 Edit the file.\n3 Display the content of a file.\n4 Open a file.\n5 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 some\n4 some\n5 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         
     switch (choise)
