@@ -5,7 +5,7 @@
 #include <fstream>
 
 
-int choise,i,m;
+int choise,i,m,elements;
 
 void SelectFile();
 void DisplayFile();
@@ -19,6 +19,7 @@ struct MyStruct
     char type[15];
     char content[100];
 };
+MyStruct initFile[100];
 
 
 
@@ -63,37 +64,32 @@ void SelectFile()
     {
        printf("\nFile selected: %s\n", nameFile);       
     }
-
     else
     {
         printf("\nNo such file.\n");
     };
+    for (;;) {
+        char arrFile[200];
+        fgets(arrFile, 200, orgFile);
+        if (arrFile[0] == '.') break;
+        initFile[i].number = atoi(arrFile);        
+        fgets(arrFile, 200, orgFile);
+        strcpy_s(initFile[i].type, arrFile);
+        fgets(arrFile, 200, orgFile);
+        strcpy_s(initFile[i].content, arrFile);
+        elements = i+1;
+        i = i + 1;
+    };
+    std::cout << "File initialized.\n";
+    printf("\nStructures: %d\n", elements);
 };
 
 void DisplayFile()
 { 
-    MyStruct DispFile;
-    char arrFile[20];
-    int num[10];
-        
-    for (i=0;i<100;i++){
-        i = 0;
-        fgets(arrFile, 20, orgFile);
-        if (arrFile[0] == '.') return;
-        DispFile.number = atoi(arrFile);
-        fgets(arrFile, 100, orgFile);
-        strcpy_s(DispFile.type, arrFile);
-        fgets(arrFile, 100, orgFile);
-        strcpy_s(DispFile.content, arrFile);
-        
-            printf("\n%d", DispFile.number);
-            printf("\n%s", DispFile.type);
-            printf("%s", DispFile.content);
-            std::cout << "\n";
-        
-    };
     
-
+    for (i=0;i<elements;i++){
+        printf("\n%d\n%s%s", initFile[i].number, initFile[i].type, initFile[i].content);
+    };
 };
 
 void DispElement()
