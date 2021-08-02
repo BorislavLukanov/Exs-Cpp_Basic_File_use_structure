@@ -8,6 +8,7 @@ int choise,i,m,elements;
 void SelectFile();
 void DisplayFile();
 void DispElement();
+void AddStruct();
 void SelectNewFile();
 int quit();
 FILE* orgFile;
@@ -33,12 +34,13 @@ int main()
         case 1: SelectFile(); break;
         case 2: DisplayFile(); break;
         case 3: DispElement(); break;
-        case 4: SelectNewFile(); break;
-        case 5: quit(); break;
-        default: printf("\nChoose from 1 to 5\n"); break;
+        case 4: AddStruct(); break;
+        case 5: SelectNewFile(); break;
+        case 6: quit(); break;
+        default: printf("\nChoose from 1 to 6\n"); break;
         };
     }
-    while (choise != 5);
+    while (choise != 6);
 };
 
 void SelectFile()
@@ -96,6 +98,12 @@ void DispElement()
      }
     while (el < 1 || el>3);
  };
+
+void AddStruct()
+{
+    fclose(orgFile);
+    fopen(orgFile, "r+");
+};
 
 void SelectNewFile()
 {
