@@ -147,9 +147,6 @@ int quit()
     if (orgFile)
     {
         std::cout << "\nquake :D\n"; fclose(orgFile); return 0;
-    }
-    else
-    {
-        std::cout << "\nNo file selected, quake :D\n"; return 0;
     };
+    std::cout << "\nNo file selected, quake :D\n"; return 0;
 };
