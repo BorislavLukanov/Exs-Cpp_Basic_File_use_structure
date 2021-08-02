@@ -105,7 +105,10 @@ void SelectNewFile()
     {
         std::cout << "\nFile closed.\nSelect 1 from the menu.";
     }
-    delete initFile;
+    delete initFile; /* Throws exeption.Searching for solution.Intent: 
+    Clear the initFile srtucture array so can be repopulated with the elements from the next file.
+    Currently the program appends in the structure array the elements from the 2nd opened file after the elements from the first.
+    */
 };
 
 int quit()
