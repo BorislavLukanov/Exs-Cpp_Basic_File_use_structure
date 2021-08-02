@@ -104,12 +104,14 @@ void DispElement()
 void AddStruct()
 {
     int floop = elements;
-    std::cout << "\nCurrent structures in the file: " + i;
+    printf("\nCurrent structures in the file: %d", i);
     for (i = floop; i < 100; i++)
     {
         char input[20];
+        //int num;
         printf("\nEnter structure: %d\n", i+1);
-        printf("\nEnter element - number: "); gets_s(input);
+        printf("\nEnter element - number: "); 
+        gets_s(input);
         if (input[0] == '.') break;
         initFile[i].number = atoi(input);
         printf("\nEnter element - type: "); gets_s(initFile[i].type);
