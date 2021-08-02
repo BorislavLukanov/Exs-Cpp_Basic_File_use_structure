@@ -52,7 +52,7 @@ void SelectFile()
     errno_t err;
     std::cout << "\nSelect the file you want to use.\nChoose between File.txt and File2.txt\n";
     std::cin >> nameFile;
-    err = fopen_s(&orgFile, nameFile, "r+");
+    err = fopen_s(&orgFile, nameFile, "r");
     if (err == 0)
     {
        printf("\nFile selected: %s\n", nameFile);
