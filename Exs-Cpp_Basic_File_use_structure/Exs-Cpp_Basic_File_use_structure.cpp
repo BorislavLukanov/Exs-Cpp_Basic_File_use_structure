@@ -13,6 +13,7 @@ void DisplayFile();
 void DispElement();
 void AddStruct();
 void SelectNewFile();
+void Save();
 int quit();
 FILE* orgFile;
 struct MyStruct
@@ -30,7 +31,7 @@ int main()
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure element.\n5 Load new file.\n6 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure element.\n5 Load new file.\n6 Save the structure to new file.\n7 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         switch (choise)
         {
@@ -39,7 +40,8 @@ int main()
         case 3: DispElement(); break;
         case 4: AddStruct(); break;
         case 5: SelectNewFile(); break;
-        case 6: quit(); break;
+        case 6: Save(); break;
+        case 7: quit(); break;
         default: printf("\nChoose from 1 to 6\n"); break;
         };
     }
@@ -134,6 +136,11 @@ void SelectNewFile()
     Clear the initFile srtucture array so can be repopulated with the elements from the next file.
     Currently the program appends in the structure array the elements from the 2nd opened file after the elements from the first.
     */
+};
+
+void Save()
+{
+
 };
 
 int quit()
