@@ -45,7 +45,7 @@ int main()
         default: printf("\nChoose from 1 to 6\n"); break;
         };
     }
-    while (choise != 6);
+    while (choise != 7);
 };
 
 void SelectFile()
@@ -153,6 +153,6 @@ int quit()
     }
     else
     {
-        return 0;
+        std::cout << "\nNo file selected, quake :D\n"; return 0;
     };
 };
