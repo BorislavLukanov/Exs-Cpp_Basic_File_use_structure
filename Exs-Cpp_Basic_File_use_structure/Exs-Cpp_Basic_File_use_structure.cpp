@@ -1,4 +1,6 @@
-
+/*For code revisioning:
+* If quit without file selected error/exception happens.
+*/
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
@@ -19,6 +21,7 @@ struct MyStruct
     char text[100];
 };
 MyStruct initFile[100];
+char nameFile[10];
 
 int main()
 {    
@@ -27,7 +30,7 @@ int main()
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Load new file.\n5 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure element.\n5 Load new file.\n6 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         switch (choise)
         {
@@ -46,7 +49,6 @@ int main()
 void SelectFile()
 {
     errno_t err;
-    char nameFile[10];
     std::cout << "\nSelect the file you want to use.\nChoose between File.txt and File2.txt\n";
     std::cin >> nameFile;
     err = fopen_s(&orgFile, nameFile, "r");
@@ -102,7 +104,14 @@ void DispElement()
 void AddStruct()
 {
     fclose(orgFile);
-    fopen(orgFile, "r+");
+    fopen_s(&orgFile, nameFile, "r+");
+    for (i = elements; i < 100; i++)
+    {
+        
+        printf("\nEnter structure element: %d\n", i);
+        
+    }
+    
 };
 
 void SelectNewFile()
@@ -121,5 +130,14 @@ void SelectNewFile()
 
 int quit()
 {
-    std::cout << "\nquake :D\n"; fclose(orgFile); return 0;
+    errno_t err;
+    err = fclose(orgFile);
+    if (err == 0)
+    {
+        std::cout << "\nquake :D\n"; return 0;
+    }
+    else
+    {
+        return 0;
+    };
 };
