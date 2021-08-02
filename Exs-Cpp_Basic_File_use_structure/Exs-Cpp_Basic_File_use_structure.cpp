@@ -1,6 +1,5 @@
 /*For code revisioning:
-* If quit without file selected error/exception happens.
-* And Comment on line 131.*/
+* Comment on line 134.*/
 
 #include <stdio.h>
 #include <string.h>
@@ -145,11 +144,9 @@ void Save()
 
 int quit()
 {
-    errno_t err;
-    err = fclose(orgFile);
-    if (err == 0)
+    if (orgFile)
     {
-        std::cout << "\nquake :D\n"; return 0;
+        std::cout << "\nquake :D\n"; fclose(orgFile); return 0;
     }
     else
     {
