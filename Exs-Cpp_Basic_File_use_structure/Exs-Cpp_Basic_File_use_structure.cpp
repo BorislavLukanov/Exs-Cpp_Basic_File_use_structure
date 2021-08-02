@@ -1,6 +1,7 @@
 /*For code revisioning:
 * If quit without file selected error/exception happens.
-*/
+* And Comment on line 131.*/
+
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
@@ -25,7 +26,6 @@ char nameFile[10];
 
 int main()
 {    
-    
     printf("\n---------File with structure----------\n");
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
@@ -51,7 +51,7 @@ void SelectFile()
     errno_t err;
     std::cout << "\nSelect the file you want to use.\nChoose between File.txt and File2.txt\n";
     std::cin >> nameFile;
-    err = fopen_s(&orgFile, nameFile, "r");
+    err = fopen_s(&orgFile, nameFile, "r+");
     if (err == 0)
     {
        printf("\nFile selected: %s\n", nameFile);
@@ -103,13 +103,19 @@ void DispElement()
 
 void AddStruct()
 {
-    fclose(orgFile);
-    fopen_s(&orgFile, nameFile, "r+");
-    for (i = elements; i < 100; i++)
+    int floop = elements;
+    std::cout << "\nCurrent structures in the file: " + i;
+    for (i = floop; i < 100; i++)
     {
-        
-        printf("\nEnter structure element: %d\n", i);
-        
+        char input[20];
+        printf("\nEnter structure: %d\n", i+1);
+        printf("\nEnter element - number: "); gets_s(input);
+        if (input[0] == '.') break;
+        initFile[i].number = atoi(input);
+        printf("\nEnter element - type: "); gets_s(initFile[i].type);
+        printf("\nEnter element - text: "); gets_s(initFile[i].text);
+        elements += 1;
+        std::cout << "\n";
     }
     
 };
