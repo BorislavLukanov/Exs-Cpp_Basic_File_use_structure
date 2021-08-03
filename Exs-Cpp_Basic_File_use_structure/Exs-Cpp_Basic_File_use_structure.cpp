@@ -6,12 +6,12 @@
 #include <iostream>
 #include <fstream>
 
-int choise,i,m,elements;
+int choise,i,m,elements,fil=0;
 void SelectFile();
 void DisplayFile();
 void DispElement();
 void AddStruct();
-void SelectNewFile();
+//void SelectNewFile();
 void Save();
 int quit();
 FILE* orgFile;
@@ -30,7 +30,7 @@ int main()
     printf("\nThe File contains structure of elements:\n- Number\n- Type\n- Text\n\n---------------------------------------\n");
     printf("\nChoose from the menu.\n");
     do {
-        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure element.\n5 Load new file.\n6 Save the structure to new file.\n7 quit\n");
+        printf("\n1 Load a file.\n2 Display the file.\n3 Display exact element from the structures.\n4 Add structure element.\n5 Save the structure to new file.\n6 quit\n");
         printf("\nChoise: "); scanf_s("%d", &choise);
         switch (choise)
         {
@@ -38,13 +38,13 @@ int main()
         case 2: DisplayFile(); break;
         case 3: DispElement(); break;
         case 4: AddStruct(); break;
-        case 5: SelectNewFile(); break;
-        case 6: Save(); break;
-        case 7: quit(); break;
+        //case 5: SelectNewFile(); break;
+        case 5: Save(); break;
+        case 6: quit(); break;
         default: printf("\nChoose from 1 to 6\n"); break;
         };
     }
-    while (choise != 7);
+    while (choise != 6);
 };
 
 void SelectFile()
@@ -75,6 +75,8 @@ void SelectFile()
     {
         printf("\nNo such file.\n");
     };
+    fclose(orgFile);
+    fil = 1;
 };
 
 void DisplayFile()
@@ -122,21 +124,19 @@ void AddStruct()
     }
     
 };
-
+/*
 void SelectNewFile()
 {
-    errno_t err;
-    err = fclose(orgFile);
-    if (err==0)
+    if (fil==0)
     {
         std::cout << "\nFile closed.\nSelect 1 from the menu.";
     }
     delete initFile; /* Throws exeption.Searching for solution.Intent: 
     Clear the initFile srtucture array so can be repopulated with the elements from the next file.
     Currently the program appends in the structure array the elements from the 2nd opened file after the elements from the first.
-    */
+    
 };
-
+*/
 void Save()
 {
 
@@ -144,9 +144,9 @@ void Save()
 
 int quit()
 {
-    if (orgFile)
+    if (fil==1)
     {
-        std::cout << "\nquake :D\n"; fclose(orgFile); return 0;
+        std::cout << "\nquake :D\n"; return 0;
     };
     std::cout << "\nNo file selected, quake :D\n"; return 0;
 };
