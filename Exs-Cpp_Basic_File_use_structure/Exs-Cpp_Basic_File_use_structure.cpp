@@ -1,8 +1,6 @@
 /*For code revisioning:
 * Comment on line 134.*/
 
-#include <stdio.h>
-#include <string.h>
 #include <iostream>
 #include <fstream>
 
@@ -70,6 +68,7 @@ void SelectFile()
        };
        std::cout << "File initialized.\n";
        printf("\nNumber of structures in the file: %d\n", elements);
+       
     }
     else
     {
@@ -102,7 +101,8 @@ void DispElement()
         };
      }
     while (el < 1 || el>3);
- };
+    
+};
 
 void AddStruct()
 {
@@ -139,7 +139,20 @@ void SelectNewFile()
 */
 void Save()
 {
-
+    
+    char name[20];
+    printf("Insert name of the file .txt:\n");
+    std::cin >> name;
+    std::ofstream myfile(name);
+    printf("\nThe name is: %s\n", name);
+    myfile.close();
+    if (myfile.is_open())
+    {
+        printf("\nFile opened.\n");
+    };
+    
+    
+    
 };
 
 int quit()
