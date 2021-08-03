@@ -1,5 +1,5 @@
 /*For code revisioning:
-* Comment on line 134.*/
+* Add function for structure nulling and reviewing DispElement() for syntax errors on adding 1st element*/
 
 #include <iostream>
 #include <fstream>
@@ -9,7 +9,6 @@ void SelectFile();
 void DisplayFile();
 void DispElement();
 void AddStruct();
-//void SelectNewFile();
 void Save();
 int quit();
 FILE* orgFile;
@@ -36,7 +35,6 @@ int main()
         case 2: DisplayFile(); break;
         case 3: DispElement(); break;
         case 4: AddStruct(); break;
-        //case 5: SelectNewFile(); break;
         case 5: Save(); break;
         case 6: quit(); break;
         default: printf("\nChoose from 1 to 6\n"); break;
@@ -68,7 +66,6 @@ void SelectFile()
        };
        std::cout << "File initialized.\n";
        printf("\nNumber of structures in the file: %d\n", elements);
-       
     }
     else
     {
@@ -101,7 +98,6 @@ void DispElement()
         };
      }
     while (el < 1 || el>3);
-    
 };
 
 void AddStruct()
@@ -111,7 +107,6 @@ void AddStruct()
     for (i = floop; i < 100; i++)
     {
         char input[20];
-        //int num;
         printf("\nEnter structure: %d\n", i+1);
         printf("\nEnter element - number: "); 
         gets_s(input);
@@ -122,37 +117,32 @@ void AddStruct()
         elements += 1;
         std::cout << "\n";
     }
-    
 };
-/*
-void SelectNewFile()
-{
-    if (fil==0)
-    {
-        std::cout << "\nFile closed.\nSelect 1 from the menu.";
-    }
-    delete initFile; /* Throws exeption.Searching for solution.Intent: 
-    Clear the initFile srtucture array so can be repopulated with the elements from the next file.
-    Currently the program appends in the structure array the elements from the 2nd opened file after the elements from the first.
-    
-};
-*/
+
 void Save()
 {
-    
     char name[20];
     printf("Insert name of the file .txt:\n");
     std::cin >> name;
     std::ofstream myfile(name);
     printf("\nThe name is: %s\n", name);
-    myfile.close();
     if (myfile.is_open())
     {
-        printf("\nFile opened.\n");
-    };
-    
-    
-    
+        for (i = 0; i < elements; i++)
+        {
+            myfile << initFile[i].number;
+            myfile << initFile[i].type;
+            myfile << initFile[i].text;
+        }
+        myfile << ".";
+        printf("\nNew structure saved to file: %s.\n", name);
+    }
+    else
+    {
+        printf("\nCan't open file %s.\n", name);
+    }
+    myfile.close();
+    printf("\nHello World. :)\n");
 };
 
 int quit()
