@@ -144,7 +144,7 @@ void Save()
 
 int quit()
 {
-    if (fil==1)
+    if (fil)
     {
         std::cout << "\nquake :D\n"; return 0;
     };
